@@ -1,14 +1,10 @@
-local function run(msg, matches)
-local url , res = http.request('http://api.gpmod.ir/time/')
+function run(msg, matches)
+local url = http.request('http://api.gpmod.ir/time/')
 local jdat = json:decode(url)
-local url = "http://latex.codecogs.com/png.download?".."\\dpi{800}%20\\LARGE%20"..jdat.ENtime
-local file = download_to_file(url,'DeaD.webp')
-send_document(get_receiver(msg) , file, ok_cb, false)
+ local text =  '🕒 ساعت '..jdat.FAtime..' \n📆 امروز '..jdat.FAdate..' میباشد.\n    —--\n🕒 '..jdat.ENtime..'\n📆 '..jdat.ENdate.. '\n\n@ElementTG'
+return text
 end
- 
 return {
-  patterns = {
-    "^[!/#][Tt][Ii][Mm][Ee]$"
-  }, 
-  run = run 
+  patterns = {"^[#/!]([Tt][iI][Mm][Ee])$"}, 
+run = run, 
 }
