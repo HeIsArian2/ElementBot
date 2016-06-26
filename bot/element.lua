@@ -255,7 +255,6 @@ function create_config( )
         "warn",
         "terminal",
         "voice",
-        "kickme",
         "music",
         "cap",
         "badword",
