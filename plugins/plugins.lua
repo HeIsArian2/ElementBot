@@ -24,15 +24,15 @@ end
 local function list_plugins(only_enabled)
   local text = ''
   for k, v in pairs( plugins_names( )) do
-    --  ➗ enabled, ➖ disabled
-    local status = '➖'
+    --  | E | enabled, | D | disabled
+    local status = '| D |'
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '➗' 
+        status = '| E |' 
       end
     end
-    if not only_enabled or status == '➗' then
+    if not only_enabled or status == '| E |' then
       -- get the name
       v = string.match (v, "(.*)%.lua")
       text = text..v..'  '..status..'\n'
@@ -70,12 +70,12 @@ end
 local function disable_plugin( name, chat )
   -- Check if plugins exists
   if not plugin_exists(name) then
-    return 'Plugin '..name..' does not exists'
+    return 'Plugin '..name..' Not Found'
   end
   local k = plugin_enabled(name)
   -- Check if plugin is enabled
   if not k then
-    return 'Plugin '..name..' not enabled'
+    return 'Plugin '..name..' Is Disable'
   end
   -- Disable and reload
   table.remove(_config.enabled_plugins, k)
@@ -122,7 +122,7 @@ end
 
 local function run(msg, matches)
   -- Show the available plugins 
-  if matches[1] == '/plist' then
+  if matches[1] == '!plist' then
     return list_plugins()
   end
 
@@ -170,12 +170,12 @@ return {
     "!plugins disable [plugin] chat: disable plugin only this chat.",
     "!plugins reload: reloads all plugins." },
   patterns = {
-    "^/plist$",
-    "^/pl? (+) ([%w_%.%-]+)$",
-    "^/pl? (-) ([%w_%.%-]+)$",
-    "^/pl? (+) ([%w_%.%-]+) (supergroup)",
-    "^/pl? (-) ([%w_%.%-]+) (supergroup)",
-    "^/pl? (*)$" },
+    "^!plist$",
+    "^!pl? (+) ([%w_%.%-]+)$",
+    "^!pl? (-) ([%w_%.%-]+)$",
+    "^!pl? (+) ([%w_%.%-]+) (supergroup)",
+    "^!pl? (-) ([%w_%.%-]+) (supergroup)",
+    "^!pl? (*)$" },
   run = run,
   privileged = true
 }
