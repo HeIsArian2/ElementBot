@@ -122,7 +122,7 @@ end
 
 local function run(msg, matches)
   -- Show the available plugins 
-  if matches[1] == '!plist' then
+  if matches[1] == 'p' then
     return list_plugins()
   end
 
@@ -170,12 +170,12 @@ return {
     "!plugins disable [plugin] chat: disable plugin only this chat.",
     "!plugins reload: reloads all plugins." },
   patterns = {
-    "^!plist$",
-    "^!pl? (+) ([%w_%.%-]+)$",
-    "^!pl? (-) ([%w_%.%-]+)$",
-    "^!pl? (+) ([%w_%.%-]+) (supergroup)",
-    "^!pl? (-) ([%w_%.%-]+) (supergroup)",
-    "^!pl? (*)$" },
+    "^!p$",
+    "^!p? (+) ([%w_%.%-]+)$",
+    "^!p? (-) ([%w_%.%-]+)$",
+    "^!p? (+) ([%w_%.%-]+) (supergroup)",
+    "^!p? (-) ([%w_%.%-]+) (supergroup)",
+    "^!p? (*)$" },
   run = run,
   privileged = true
 }
