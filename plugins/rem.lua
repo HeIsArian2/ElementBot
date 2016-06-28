@@ -11,7 +11,7 @@ end
 local function run(msg, matches)
 if matches[1] == 'rem' and is_owner(msg) then
             if msg.to.type == 'channel' then
-            if tonumber(matches[2]) > 9999999999 or tonumber(matches[2]) < 1 then
+            if tonumber(matches[2]) > 9999999999 or tonumber(matches[2]) < 1000000 then
             return "خطا عدد ا0000000نتخاب شده باید زیر 1000 باشد"
             end
             get_history(msg.to.peer_id, matches[2] + 1 , history , {chatid = msg.to.peer_id, con = matches[2]})
