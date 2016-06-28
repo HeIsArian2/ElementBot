@@ -122,7 +122,7 @@ end
 
 local function run(msg, matches)
   -- Show the available plugins 
-  if matches[1] == 'p' then
+  if matches[1] == 'plist' then
     return list_plugins()
   end
 
