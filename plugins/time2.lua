@@ -1,10 +1,10 @@
-local function run(msg, matches)
-local url , res = http.request('http://api.gpmod.ir/time/')
+function run(msg, matches)
+local url = http.request('http://api.gpmod.ir/time/')
 local jdat = json:decode(url)
-local date = jdat.FAdate
-return date
+ local text =  '🕒 ساعت '..jdat.FAtime..' \n📆 امروز '..jdat.FAdate..' میباشد.\n    —--\n🕒 '..jdat.ENtime..'\n📆 '..jdat.ENdate.. '\n\n@cannel_window'
+return text
 end
 return {
-  patterns = {"^[#/!]([Tt][Ii][Mm][Ee])$"}, 
-run = run 
+  patterns = {"^[#/!]([Tt][iI][Mm][Ee])$"}, 
+run = run, 
 }
