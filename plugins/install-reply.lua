@@ -19,7 +19,7 @@ local function run(msg,matches)
    local name = matches[2]
       if matches[1] == "install" and matches[2] and is_sudo(msg) then
 load_document(msg.reply_id, saveplug, {msg=msg,name=name})
-        return 'Plugin '..name..' has been saved in plugins file.'
+        return 'Plugin '..name..'Has Been Saved In ElementBot/Plugins/'..name..'.lua :D'
     end
 end
 end
