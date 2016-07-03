@@ -1,5 +1,5 @@
 local function run(msg, matches)
-    if matches[1] == 'pv' then
+    if matches[1] == 'v' then
      if msg.to.type == 'chat' or msg.to.type == 'channel' then
         return "نمیام 😐!"
     else
@@ -9,7 +9,7 @@ end
 end
 return {
     patterns = {
-        "^[!#/]([Pp]v)$"
+        "^[Pp]([Vv])$"
     },
     run = run
 }
